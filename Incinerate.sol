@@ -707,7 +707,7 @@ contract Incinerate is Context, IERC20, Ownable {
     address[] private _excluded;
    
     uint256 private constant MAX = ~uint256(0);
-    uint256 private _tTotal = 10101111100101 * 10**5; //about 10 trillion coins, 1 quintillion units
+    uint256 private _tTotal = 10010110100101 * 10**5; //about 10 trillion coins, 1 quintillion units
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
 
@@ -727,7 +727,7 @@ contract Incinerate is Context, IERC20, Ownable {
     bool inSwapAndLiquify;
     bool public swapAndLiquifyEnabled = true;
     
-    uint256 public _maxTxAmount = 10101111100101 * 10**5;
+    uint256 public _maxTxAmount = 10010110100101 * 10**5;
     uint256 private numTokensSellToAddToLiquidity = 100101 * 10**5;
     
     event MinTokensBeforeSwapUpdated(uint256 minTokensBeforeSwap);
@@ -756,7 +756,7 @@ contract Incinerate is Context, IERC20, Ownable {
         uniswapV2Router = _uniswapV2Router;
         
         //exclude owner and this contract from fee
-        _isExcludedFromFee[owner()] = false;       //owner not excluded, only contract excluded.
+        _isExcludedFromFee[owner()] = false;       //owner not excluded from fee, only contract excluded.
         _isExcludedFromFee[address(this)] = true;
         
         
@@ -1098,7 +1098,7 @@ contract Incinerate is Context, IERC20, Ownable {
             tokenAmount,
             0, // slippage is unavoidable
             0, // slippage is unavoidable
-            address(0xdEAD000000000000000042069420694206942069),    //LP tokens automatically sent to burn address for perm lock liquidity
+            address(this),                       //LP tokens automatically sent to contract as per certik audit instead of owner
             block.timestamp
         );
     }
