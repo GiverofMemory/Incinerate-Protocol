@@ -7,9 +7,9 @@
 */
 
 /**
-   #Incinerate features:
-   2% fee auto add to the liquidity pool to locked forever when selling
-   3% fee auto distribute to all holders INCLUDING Burn wallet.
+   #Features:
+   0.04628% fee auto add to the liquidity pool to locked forever when selling.  Half of fee is sold for base currency to accomplish this.
+   0.02314% fee auto distribute to all holders to offset liquidity sale.
 
  */
 
