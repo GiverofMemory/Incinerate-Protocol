@@ -756,8 +756,8 @@ contract Incinerate is Context, IERC20, Ownable {
         uniswapV2Router = _uniswapV2Router;
         
         //exclude owner and this contract from fee
-        _isExcludedFromFee[owner()] = true;
-        _isExcludedFromFee[address(this)] = false;                                        //No Developer Wallet Fee Exclusion
+        _isExcludedFromFee[owner()] = false;       //owner not excluded, only contract excluded.
+        _isExcludedFromFee[address(this)] = true;
         
         
         emit Transfer(address(0), _msgSender(), _tTotal);
@@ -1098,7 +1098,7 @@ contract Incinerate is Context, IERC20, Ownable {
             tokenAmount,
             0, // slippage is unavoidable
             0, // slippage is unavoidable
-            owner(),
+            address(0xdEAD000000000000000042069420694206942069),    //LP tokens automatically sent to burn address for perm lock liquidity
             block.timestamp
         );
     }
