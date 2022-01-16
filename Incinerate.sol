@@ -747,7 +747,7 @@ contract Incinerate is Context, IERC20, Ownable {
     constructor () public {
         _rOwned[_msgSender()] = _rTotal;
         
-        IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x5d0bF8d8c8b054080E2131D8b260a5c6959411B8);
+        IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0xa194133ED572D86fe27796F2feADBAFc062cB9E0); //Benswap router
          // Create a uniswap pair for this new token
         uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory())
             .createPair(address(this), _uniswapV2Router.WETH());
@@ -757,8 +757,8 @@ contract Incinerate is Context, IERC20, Ownable {
         
         //exclude owner and this contract from fee
         _isExcludedFromFee[owner()] = true;
-        _isExcludedFromFee[address(this)] = true;                                        //Developer Wallet Fee Exclusion
-        _isExcludedFromFee[address(0x28026B722Bb83B9cA84bE57bB6F818e3F6038627)] = true;  //Promotion Wallet Fee Exclusion
+        _isExcludedFromFee[address(this)] = false;                                        //No Developer Wallet Fee Exclusion
+        
         
         emit Transfer(address(0), _msgSender(), _tTotal);
     }
