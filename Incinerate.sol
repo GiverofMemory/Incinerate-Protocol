@@ -707,18 +707,18 @@ contract Incinerate is Context, IERC20, Ownable {
     address[] private _excluded;
    
     uint256 private constant MAX = ~uint256(0);
-    uint256 private _tTotal = 10101111100101 * 10**5;
+    uint256 private _tTotal = 10101111100101 * 10**5; //about 10 trillion coins, 1 quintillion units
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
 
     string private _name = "Incinerate";
     string private _symbol = "FIRE";
-    uint8 private _decimals = 18;
+    uint8 private _decimals = 5;
     
-    uint256 public _taxFee = 0.02314;
+    uint256 public _taxFee = 0.02314; //just enough to compensate for sale of half liquidity fee
     uint256 private _previousTaxFee = _taxFee;
     
-    uint256 public _liquidityFee = 0.04628;
+    uint256 public _liquidityFee = 0.04628; //half of this is sold in order to add other half to liquidity
     uint256 private _previousLiquidityFee = _liquidityFee;
 
     IUniswapV2Router02 public immutable uniswapV2Router;
